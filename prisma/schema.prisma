@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+}
+
+model Museum {
+  id        String   @id @default(cuid())
+  name String
+  description String @db.MediumText
+  address String
+  phone String
+  website String
+  mainImage String
+  image1 String
+  image2  String
+  tokenIds TokenId[]
+}
+
+model TokenId{
+  id Int @id
+  museum Museum? @relation(fields: [museumId],references: [id])
+  museumId String?
+
+  artist ArtistProfile @relation(fields: [artistId],references: [id])
+  artistId String
+
+
+
+
+  @@index([museumId])
+  @@index([artistId])
+}
+
+
+model Event {
+  id        String   @id @default(cuid())
+  name String
+  address String
+  description String @db.MediumText
+  date String
+  time String
+  mainImage String
+  image1 String
+  image2  String
+  ticketPrice Int
+  
+}
+
+
+model Award {
+  id String @id @default(cuid())
+  name String
+  artist ArtistProfile @relation(fields: [artistId],references: [id])
+  artistId String
+
+  @@index([artistId])
+}
+
+model ArtistProfile {
+  id String @id
+  user User @relation(fields: [id],references: [id],onDelete: Cascade)
+  description String @db.MediumText
+  facebook String?
+  twitter String?
+  instagram String?
+  followers Int
+  awards Award[]
+  //Artworks
+  tokenIds TokenId[]
+
+  @@index([id])
+}
+
+// Necessary for Next auth
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?  @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?  @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  password String? @db.Text
+  accounts      Account[]
+  sessions      Session[]
+  role Role @default(collector)
+  artistProfile ArtistProfile?
+}
+
+enum Role {
+  admin
+  artist
+  curator
+  collector
+
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
