@@ -39,7 +39,7 @@ export default function ArtisitsSection() {
                   image={user.image}
                   name={user.name}
                   id={id}
-                  bgImage="https://images.unsplash.com/photo-1569172122301-bc5008bc09c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                  bgImage="https://png.pngtree.com/thumb_back/fh260/background/20210728/pngtree-abstract-oil-painting-texture-background-on-abstract-style-canvas-image_753265.jpg"
                 />
               </Carousel.Slide>
             ))}
