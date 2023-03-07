@@ -119,7 +119,7 @@ export default function PostNFT() {
 
       //Pull the deployed contract instance
       const contract = new ethers.Contract(
-        "0xE4418bC4B94dbfD76018c50E71f0966B69B6B2D9",
+        "0x6b9511Ec22b3e0d3F3540263c71aEa47aF4e3669",
         ABI,
         signer
       );
