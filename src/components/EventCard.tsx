@@ -38,7 +38,7 @@ export default function EventCard({
         </Text>
       </Box>
       <Group mt={"lg"} position="apart">
-        <Text weight={"bold"}>{price} $</Text>
+        <Text weight={"bold"}>{price} FTM</Text>
         <Button component={NextLink} href={`/event/${id}`} size="xs">
           Details
         </Button>

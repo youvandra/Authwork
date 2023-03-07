@@ -14,7 +14,7 @@ export const CHAIN_PARAMS = {
   chainName: "Fantom testnet",
   chainId: CHAIN_ID,
   nativeCurrency: { name: "FTM", decimals: 18, symbol: "FTM" },
-  rpcUrls: ["https://rpc.testnet.fantom.network/"],
+  rpcUrls: ["https://rpc.ankr.com/fantom_testnet"],
   blockExplorerUrls: ["https://testnet.ftmscan.com/"],
   iconUrls: ["https://cryptologos.cc/logos/fantom-ftm-logo.png"],
 };
