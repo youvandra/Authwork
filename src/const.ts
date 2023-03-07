@@ -1,7 +1,7 @@
 export const YOUTUBE_VIDEO =
   "https://www.youtube.com/embed/";
 
-export const CONTRACT_ADDRESS = "0x6b9511Ec22b3e0d3F3540263c71aEa47aF4e3669"; // SUDAH
+export const CONTRACT_ADDRESS = "0xF1237892664e6b342cD9bBF7B4d34EaBBae97d09"; // SUDAH
 
 export const PINATA_KEY = "11427f64e26bc7eaeca1"; // SUDAH
 
